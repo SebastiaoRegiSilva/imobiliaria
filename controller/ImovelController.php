@@ -7,10 +7,36 @@
     {
         /**
         * Persiste um novo imóvel no repositório.
+        *@fotoAtual Foto armazenada na base de dados.
+        *@fotoTipo Depois comentar.
         */ 
-        public static function salvar()
+        public static function salvar($fotoAtual="", $fotoTipo="")
         {
+            // Criar um objeto do tipo imóvel.
             $imovel = new Imovel();
+
+            // Trata a foto para ser armazenada no banco de dados.
+            $imagem = array();
+            if(is_uploaded_file($_FILES['foto']['tmp_name']))
+            {
+                $imagem['data'] = file_get_contents($_FILES['foto']['tmp_name']);
+                $imagem['tipo'] = $_FILES['foto']['type'];
+            }
+            
+            // Verifica se o array a imagem naão está vazia, se tiver alguma no mesmo
+            // Quer dizer que o usuário alterou a imagem ou está cadastrando um imóvel novo.
+            if(!empty($imagem))
+            {
+                $imovel->setFoto($imagem['data']);
+                $imovel->setFotoTipo($imagem['tipo']);
+            }
+            else
+            {
+                $imovel->setFoto($fotoAtual);
+                $imovel->setFotoTipo($fotoTipo);
+            }
+            // ----> Continua
+            
             $imovel->setDescricao($_POST['descricao']);
             $imovel->setFoto($_POST['foto']);
             $imovel->setValor($_POST['valor']);
