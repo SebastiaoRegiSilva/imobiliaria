@@ -54,7 +54,7 @@
         /**
         * Logar com um usuário no sistema.
         */
-        public static function logat()
+        public static function logar()
         {
             $usuario = new Usuario();
             $usuario->setLogin($_POST['login']);

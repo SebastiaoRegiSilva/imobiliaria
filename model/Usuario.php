@@ -157,7 +157,7 @@
         }
 
         /**
-        * Realização o loguin de usuários cadastrados na base de dados.
+        * Realização o login de usuários cadastrados na base de dados.
         */ 
         public function logar()
         {
@@ -167,14 +167,12 @@
             $conexao = new Conexao();
             // Cria a conexao com o banco de dados.
             $conn = $conexao->getConection();
-            // Cria query de seleção.
+            // Cria query de seleção. (Dois pontos são indice do array.)
             $query = "SELECT * FROM usuario WHERE login = :login and senha = :senha";
             // Prepara a query para execução.
             $stmt = $conn->prepare($query);
-            // Cria um array para receber o resultado da seleção.
-            $result = array();
             // Executa a query.
-            if ($stmt->execute()(array(':login'=> $this->login, ':senha'=> $this->senha))) 
+            if ($stmt->execute(array(':login'=> $this->login, ':senha'=> $this->senha))) 
             {
                 if($stmt->rowCount() > 0)
                     $result = true;

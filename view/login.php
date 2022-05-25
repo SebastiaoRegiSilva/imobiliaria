@@ -2,7 +2,7 @@
     <form name="cadLogin" id="cadLogin" action="" method="post">
         <div class="card" style="top:40px; width: 50%;">
             <div class="card-header">
-                <span class="card´-title">Login</span>
+                <span class="card-title">Login</span>
             </div>
             <div class="card-body"></div>
             </div>
@@ -21,7 +21,7 @@
     if(isset($_POST['btnLogar']))
     {
         // Chama uma função PHP que permite informar classe e o Método que será acionado.
-        $_SESSION['logado'] = call_user_func(array('UsuariController', 'logar'));
+        $_SESSION['logado'] = call_user_func(array('UsuarioController', 'logar'));
         // Armazena o usuário na SESSION.
         $_SESSION['login'] = $_POST['login'];
         // Redireciona para a index.
