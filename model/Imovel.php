@@ -77,17 +77,17 @@
             {
                 if($this->id > 0)
                 {
-                    $query = "UPDATE imovel SET descricao = :descricao, foto = :foto, valor = :valor, tipo = :tipo WHERE id = :id";
+                    $query = "UPDATE imovel SET descricao = :descricao, foto = :foto, valor = :valor, tipo = :tipo, fotoTipo = :fotoTipo WHERE id = :id";
                     $stmt = $conn->prepare($query);
-                    if($stmt->execute(array(':descricao' => $this->descricao, ':foto' => $this->foto, ':valor' => $this->valor, ':id' => $this->id)))
+                    if($stmt->execute(array(':descricao' => $this->descricao, ':foto' => $this->foto, ':valor' => $this->valor, ':fotoTipo' => $this->fotoTipo, ':id' => $this->id)))
                         $result = $stmt->rowCount();
                     
                 }
                 else
                 {
-                    $query = "INSERT INTO imovel (id, descricao, foto, valor, tipo) values (null,:descricao,:foto,:valor, :tipo)";
+                    $query = "INSERT INTO imovel (id, descricao, foto, valor, tipo, fotoTipo) values (null,:descricao,:foto,:valor, :tipo, :fotoTipo)";
                     $stmt = $conn->prepare($query);
-                    if($stmt->execute(array(":descricao" => $this->descricao, ":foto" => $this->foto, ":valor" => $this->valor, ":tipo" => $this->tipo)))
+                    if($stmt->execute(array(":descricao" => $this->descricao, ":foto" => $this->foto, ":valor" => $this->valor, ":tipo" => $this->tipo, ':fotoTipo' => $this->fotoTipo)))
                         $result = $stmt->rowCount();
                 }
             }
