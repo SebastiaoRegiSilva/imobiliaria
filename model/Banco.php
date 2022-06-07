@@ -11,11 +11,13 @@
         
         /**
         * Remove os dados cadastrados na base de dados com base no código de identificação.
+        * @param mixed $id Código de identificação.
         */ 
         abstract public function remove($id);
         
         /**
         * Busca dados cadastrados na base de dados com base no códido de identificação.
+        * @param mixed $id Código de identificação.
         */ 
         abstract public function find($id);
         
