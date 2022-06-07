@@ -30,7 +30,7 @@
 
         /**
         * Edita um usuário cadastrado com base em seu código de identificação.
-        * @id  Código de identificação do usuário.
+        * @param mixed $id  Código de identificação do usuário.
         */
         public static function editar($id)
         {
@@ -43,7 +43,7 @@
 
         /**
         * Exclui um usuário cadastrado com base em seu código de identificação.
-        * @id  Código de identificação do usuário.
+        * @param mixed $id  Código de identificação do usuário.
         */
         public static function excluir($id)
         {
