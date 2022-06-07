@@ -4,9 +4,10 @@ use imobiliaria;
 create table imovel(
     id int primary key auto_increment,
     descricao varchar(200) not null,
-    foto varchar(30),
+    foto longblob,
     valor decimal(9,2),
-    tipo char(1)
+    tipo char(1),
+    fotoTipo varchar(20)
 );
 
 create table usuario(
@@ -25,3 +26,6 @@ create table visualizacao(
     foreign key(idUsuario) references usuario(id),
     foreign key(idImovel) references imovel(id)
 );
+
+-- Descrição das colunas de uma tabela.
+show COLUMNS from <nomeDaTabela>;
