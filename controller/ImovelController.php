@@ -7,8 +7,8 @@
     {
         /**
         * Persiste um novo imóvel no repositório.
-        *@fotoAtual Foto armazenada na base de dados.
-        *@fotoTipo Depois comentar.
+        * @param mixed $fotoAtual Foto armazenada na base de dados.
+        * @param mixed $fotoTipo Depois comentar.
         */ 
         public static function salvar($fotoAtual="", $fotoTipo="")
         {
@@ -23,7 +23,7 @@
                 $imagem['tipo'] = $_FILES['foto']['type'];
             }
             
-            // Verifica se o array a imagem naão está vazia, se tiver alguma no mesmo
+            // Verifica se o array a imagem não está vazia, se tiver alguma no mesmo
             // Quer dizer que o usuário alterou a imagem ou está cadastrando um imóvel novo.
             if(!empty($imagem))
             {
@@ -56,7 +56,7 @@
         
         /**
         * Edita um imóvel cadastrado com base em seu código de identificação.
-        * @id  Código de identificação do imóvel.
+        * @param mixed  $id  Código de identificação do imóvel.
         */
         public static function editar($id)
         {
@@ -68,7 +68,7 @@
 
         /**
         * Exclui um imóvel cadastrado com base em seu código de identificação.
-        * @id  Código de identificação do imóvel.
+        * @param mixed $id  Código de identificação do imóvel.
         */
         public static function excluir($id)
         {
