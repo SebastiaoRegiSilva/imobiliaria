@@ -1,49 +1,55 @@
-<?php
-    //require_once '../head.php';
-?>
+<h2 style="margin-left: 43%; margin-top: 35px; margin-bottom: 35px;">Cadastro de usuário</h2>
 <div class="container">
-    <form name="cadUsuario" id="cadUsuario" action="" method="post">
-        <div class="card" style="top:40px">
-            <div class="card-header">
-                <span class="card-title">Cadastro de Usuários</span>
-            </div>
-            <div class="card-body">
-            </div>
-            <div class="form-group form-row">
-                <label class="col-sm-2 col-form-label text-right">Login:</label>
-                <input type="text" class="form-control col-sm-8" name="login" id="login" value="" />
-            </div>
-            <div class="form-group form-row">
-                <label class="col-sm-2 col-form-label text-right">Senha:</label>
-                <input type="password" class="form-control col-sm-8" name="senha1" id="senha1" value="" />
-            </div>
-            <div class="form-group form-row">
-                <label class="col-sm-2 col-form-label text-right">Confirmação:</label>
-                <input type="password" class="form-control col-sm-8" name="senha2" id="senha2" value="" />
-            </div>
-            <div class="form-group form-row">
-                <label class="col-sm-2 col-form-label text-right">Permissão:</label>
-                <select name="permissao" id="permissao" class="form-control col-sm-8">
-                    <option value="0"></option>
-                    <option value="A">Administrador</option>
-                    <option value="C">Comum</option>
-                </select>
-            </div>
-            <div class="card-footer">
-                <input type="hidden" name="id" id="id" value="" />
-                <input type="submit" class="btn btn-success" name="btnSalvar" id="btnSalvar">
-            </div>
+    <div class="row justify-content-md-center">
+
+        <div class="col-md-5">
+            <form name="cadUsuario" action="" method="POST">
+                <input type="text" name="id" id="id" value="<?php echo isset($usuario) ? $usuario->getId() : '' ?>" hidden="" />
+                <div class="mb-3">
+                    <label class="form-label">Login</label>
+                    <input type="text" class="form-control" name="login" value="<?php echo isset($usuario) ? $usuario->getLogin() : '' ?>">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Senha</label>
+                    <input type="password" class="form-control" name="senha1" value="<?php echo isset($usuario) ? $usuario->getSenha() : '' ?>">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Confirmar Senha</label>
+                    <input type="password" class="form-control" name="senha2">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Permissão</label>
+                    <select class="form-select" name="permissao">
+                        <option value="A" <?php echo isset($usuario) && $usuario->getPermissao() == 'A' ? 'seleted' : '' ?>>Administrador</option>
+                        <option value="C" <?php echo isset($usuario) && $usuario->getPermissao() == 'C' ? 'seleted' : '' ?>>Comum</option>
+                    </select>
+                </div>
+                <divalign="center">
+                    <button type="submit" name="btnSalvar" class="btn btn-primary">Enviar</button>
+                </div>
+            </form>
+            <br>
+            <?php
+            if (isset($_POST['btnSalvar'])) {
+                $salvar = call_user_func(array('UsuarioController', 'salvar'));
+                if ($salvar) {
+            ?>
+                    <div class="alert alert-success" role="alert">
+                        A senhas não são iguais!
+                    </div>
+                <?php
+                } else {
+                ?>
+                    <div class="alert alert-danger" role="alert">
+                        Usuário cadastrado com sucesso!
+                    </div>
+            <?php
+                }
+            }
+            ?>
         </div>
-    </form>
+    </div>
 </div>
-
-<?php
-    if(isset($_POST['btnCadastrar']))
-    {
-
-        require_once '../controller/UsuarioController.php';
-        call_user_func(array('UsuarioController','salvar'));
-    }
-    
-    // require_once '../foot.php';
-?>

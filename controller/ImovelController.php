@@ -37,8 +37,8 @@
             }
             // ----> Continua
             
+            $imovel->setId($_POST['id']);
             $imovel->setDescricao($_POST['descricao']);
-            $imovel->setFoto($_POST['foto']);
             $imovel->setValor($_POST['valor']);
             $imovel->setTipo($_POST['tipo']);
 

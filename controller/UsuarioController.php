@@ -34,7 +34,6 @@
         */
         public static function editar($id)
         {
-            
             $usuario = new Usuario;
             $usuario = $usuario->find($id);
 

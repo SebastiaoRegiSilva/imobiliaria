@@ -66,48 +66,37 @@
 </head>
 <body>
     <div style="margin-top: 50px; margin-right: 240px;">
-      <ul class="nav justify-content-end nav-pills">
-        
-        <span class="navbar-brand mb-0 h1" style="margin-right:63%;">Avenus Imobiliária</span>
-        
-        
-        <li class="nav-item">
-            <a class="nav-link  " href="index.php" style="color: black;">Início</a>
-        </li>
-        <!-- 
-        <li class="nav-item">
-            <a class="nav-link " href="?action=imovelNovo" style="color: black;">Imóveis</a>
-        </li>
-        -->
-        <li class="nav-item">
-            <div class="dropdown">
-                <button class="dropbtn">Usuário</button>
-                <div class="dropdown-content">
-                    <a href="?action=usuarioNovo">Novo</a>
-                    <a href="?action=usuarioListar">Listar</a>
+        <ul class="nav justify-content-end nav-pills">
+            <span class="navbar-brand mb-0 h1" style="margin-right:63%;">Imobiliária alvorecer</span>
+            <li class="nav-item">
+                <a class="nav-link  " href="index.php" style="color: black;">Início</a>
+            </li>
+            <li class="nav-item">
+                <div class="dropdown">
+                    <button class="dropbtn">Usuário</button>
+                    <div class="dropdown-content">
+                        <a href="?action=usuarioNovo">Novo</a>
+                        <a href="?action=usuarioListar">Listar</a>
+                    </div>
                 </div>
-            </div>
-        </li>
-        <div style="width: 10px;">
-
-        </div>
-        <li class="nav-item">
-            <div class="dropdown">
-                <button class="dropbtn">Imóvel</button>
-                <div class="dropdown-content">
-                    <a href="?action=imovelNovo">Novo</a>
-                    <a href="?action=imovelListar">Listar</a>
+            </li>
+            <li class="nav-item">
+                <div class="dropdown">
+                    <button class="dropbtn">Imóvel</button>
+                    <div class="dropdown-content">
+                        <a href="?action=imovelNovo">Novo</a>
+                        <a href="?action=imovelListar">Listar</a>
+                    </div>
                 </div>
-            </div>
-        </li>
-      </ul>  
+            </li>
+        </ul>  
     </div>
 
 <?php
 
     if(isset($_GET['action'])){
 
-        //USUARIO
+        // Usuário
         if($_GET['action'] == 'usuarioEditar'){
             $usuario = call_user_func(array('UsuarioController', 'editar'), $_GET['id']);
             require_once 'view/cadUsuario.php';
@@ -142,8 +131,9 @@
             require_once 'view/cadImovel.php';
         }
 
-    }else{
-        //require_once 'view/cadUsuario.php';
+    }
+    else
+    {
         ?>  
             <br>
             <div class="container">
@@ -151,18 +141,11 @@
                     <img class="d-block w-100" src="assets/img/1.png" alt="Second slide">
                 </div>
             </div>
-                    
-                    
         <?php
     }
-?>
-    
-
-    
-
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        ?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script> -->
-
-    </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+</body>
 </html>
