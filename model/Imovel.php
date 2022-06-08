@@ -64,12 +64,12 @@
             $this->tipo = $tipo;
         }
 
-        public function getTipo()
+        public function getFotoTipo()
         {
             return $this->fotoTipo;
         }
 
-        public function setTipo($fotoTipo)
+        public function setFotoTipo($fotoTipo)
         {
             $this->fotoTipo = $fotoTipo;
         }
