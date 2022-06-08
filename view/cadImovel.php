@@ -2,7 +2,7 @@
     //require_once '../head.php';
 ?>
 <div class="container">
-    <form name="cadUsuario" id="cadUsuario" action="" method="post">
+    <form name="cadUsuario" id="cadUsuario" action="" method="post" enctype="multipart/form-data">
         <div class="card" style="top:40px">
             <div class="card-header">
                 <span class="card-title">Cadastro de Imóveis.</span>
