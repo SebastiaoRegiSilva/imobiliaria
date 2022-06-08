@@ -51,6 +51,7 @@
         
         /**
         * Definir valores da senhas criptografadas com SHA1.
+        * @param mixed $senha Senha do usuário que será armazenada conforme regra de criptografia.
         */ 
         public function setSenha($senha)
         {
