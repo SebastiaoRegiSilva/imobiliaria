@@ -12,6 +12,7 @@
         private $foto;
         private $valor;
         private $tipo;
+        private $fotoTipo;
 
         public function getId()
         {
@@ -63,6 +64,16 @@
             $this->tipo = $tipo;
         }
 
+        public function getTipo()
+        {
+            return $this->fotoTipo;
+        }
+
+        public function setTipo($fotoTipo)
+        {
+            $this->fotoTipo = $fotoTipo;
+        }
+        
         /**
         * Cadastra um imóvel na base de dados, caso não exista e edita se existir.
         */ 
