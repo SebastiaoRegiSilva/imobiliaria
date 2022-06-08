@@ -107,7 +107,7 @@
 
         /**
         * Remove um imóvel na base de dados baseado no Id.
-        * @id  Código de identificação do imóvel.
+        * @param mixed $id  Código de identificação do imóvel
         */ 
         public function remove($id)
         {
@@ -135,7 +135,7 @@
 
         /**
         * Busca um imóvel na base de dados baseado no Id.
-        * @id  Código de identificação do imóvel.
+        * @param mixed $id  Código de identificação do imóvel.
         */ 
         public function find($id)
         {
