@@ -15,7 +15,7 @@
             </div>
             <div class="form-group form-row">
                 <label class="col-sm-2 col-form-label text-right">Foto:</label>
-                <input type="text" class="form-control col-sm-8" name="foto" id="foto" value="" />
+                <input type="file" class="form-control col-sm-8" name="foto" id="foto" />
             </div>
             <div class="form-group form-row">
                 <label class="col-sm-2 col-form-label text-right">Valor:</label>
@@ -38,14 +38,28 @@
         </div>
     </form>
 </div>
+<?php
+    if(isset($imovel) && !empty($imovel->getFoto())) 
+    {
+?>
+<div class="form-group form-row">
+    <div class="text-center">
+        <img class="img-thumbnail" style="width: 25%;" src="data:<?php echo base64_encode($imovel->getFoto());?>">
+    </div>
+</div>
+<?php
+    }
+?>
 
 <?php
     if(isset($_POST['btnSalvar']))
     {
-        echo 'Salvo!';
-        require_once '../controller/ImovelController.php';
-        call_user_func(array('ImovelController','salvar'));
-    }
+        if(isset($imovel))
+            call_user_func(array('ImovelController', 'salvar'), $imovel->getFoto(), $imovel()->getFotoTipo());
+        else
+            call_user_func(array('ImovelController', 'salvar'));
 
+        header('Location: index.php?action=listar&page=imovel');
+    }
     //require_once '../foot.php';
 ?>
