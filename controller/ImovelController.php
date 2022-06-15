@@ -21,6 +21,10 @@
             {
                 $imagem['data'] = file_get_contents($_FILES['foto']['tmp_name']);
                 $imagem['tipo'] = $_FILES['foto']['type'];
+                $path = 'imagens/'.$_FILES['foto']['name'];
+                $imagem['path'] = $path;
+                // Upload do arquivo para o servidor.
+                move_uploaded_file($_FILES['foto']['temp_name'], $path);
             }
             
             // Verifica se o array a imagem não está vazia, se tiver alguma no mesmo
@@ -29,11 +33,16 @@
             {
                 $imovel->setFoto($imagem['data']);
                 $imovel->setFotoTipo($imagem['tipo']);
+                $imovel->setPath($imagem['path']);
+                // Verifica se existe um path da imagem e se sim remove a mesma do servidor.
+                if(!empty($_POST['path']))
+                    unlink($_POST['path']);
             }
             else
             {
                 $imovel->setFoto($fotoAtual);
                 $imovel->setFotoTipo($fotoTipo);
+                $imovel->setPath($_POST['path']);
             }
             // ----> Continua
             
