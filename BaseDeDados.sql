@@ -27,5 +27,8 @@ create table visualizacao(
     foreign key(idImovel) references imovel(id)
 );
 
+// Alteração na tabela de imóvel.
+alter table imovel add path varchar(50);
+
 -- Descrição das colunas de uma tabela.
 show COLUMNS from <nomeDaTabela>;
