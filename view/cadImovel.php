@@ -15,7 +15,7 @@
                 ?>
                     <div class="mb-3">
                         <label class="form-label">Foto atual</label>
-                        <div align="center">
+                        <div alingn="center">
                             <img src="model/img/<?php echo $imovel->getFoto(); ?>" width="100px">
                         </div>
                     </div>
@@ -47,6 +47,20 @@
                     </select>
                 </div>
 
+                <?php
+                    if(isset($imovel) && !empty($imovel->getPath()))
+                    {
+                ?>
+                
+                // Imput para persistir as imagens no servidor.00
+                <div class="form-group form-row">
+                    <div class="text-center">
+                        <img class="img-thumbnail" style="width: 25%" src="<?php echo $imovel->getPath();?>">
+                    </div> 
+                </div>
+                <?php
+                    }
+                ?>
 
                 <div align="center">
                     <button type="submit" name="btnSalvar" class="btn btn-primary">Enviar</button>
