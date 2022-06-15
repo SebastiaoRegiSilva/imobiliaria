@@ -99,7 +99,7 @@
             {
                 if($this->id > 0)
                 {
-                    $query = "UPDATE imovel SET descricao = :descricao, foto = :foto, valor = :valor, tipo = :tipo, fotoTipo = :fotoTipo WHERE id = :id";
+                    $query = "UPDATE imovel SET descricao = :descricao, foto = :foto, valor = :valor, tipo = :tipo, fotoTipo = :fotoTipo, path = :path WHERE id = :id";
                     $stmt = $conn->prepare($query);
                     if($stmt->execute(array(':descricao' => $this->descricao, ':foto' => $this->foto, ':valor' => $this->valor, ':fotoTipo' => $this->fotoTipo, ':path' => $this->path, ':id' => $this->id)))
                         $result = $stmt->rowCount();
