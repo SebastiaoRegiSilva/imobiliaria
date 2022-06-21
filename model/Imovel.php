@@ -13,6 +13,7 @@
         private $valor;
         private $tipo;
         private $fotoTipo;
+        private $path;
 
         public function getId()
         {
@@ -74,6 +75,16 @@
             $this->fotoTipo = $fotoTipo;
         }
         
+        public function getPath()
+        {
+            return $this->path;
+        }
+
+        public function setPath($path)
+        {
+            $this->path = $path;
+        }
+        
         /**
         * Cadastra um imóvel na base de dados, caso não exista e edita se existir.
         */ 
@@ -88,17 +99,17 @@
             {
                 if($this->id > 0)
                 {
-                    $query = "UPDATE imovel SET descricao = :descricao, foto = :foto, valor = :valor, tipo = :tipo, fotoTipo = :fotoTipo WHERE id = :id";
+                    $query = "UPDATE imovel SET descricao = :descricao, foto = :foto, valor = :valor, tipo = :tipo, fotoTipo = :fotoTipo, path = :path WHERE id = :id";
                     $stmt = $conn->prepare($query);
-                    if($stmt->execute(array(':descricao' => $this->descricao, ':foto' => $this->foto, ':valor' => $this->valor, ':fotoTipo' => $this->fotoTipo, ':id' => $this->id)))
+                    if($stmt->execute(array(':descricao' => $this->descricao, ':foto' => $this->foto, ':valor' => $this->valor, ':fotoTipo' => $this->fotoTipo, ':path' => $this->path, ':id' => $this->id)))
                         $result = $stmt->rowCount();
                     
                 }
                 else
                 {
-                    $query = "INSERT INTO imovel (id, descricao, foto, valor, tipo, fotoTipo) values (null,:descricao,:foto,:valor, :tipo, :fotoTipo)";
+                    $query = "INSERT INTO imovel (id, descricao, foto, valor, tipo, fotoTipo, path) values (null, :descricao, :foto, :valor, :tipo, :fotoTipo, :path)";
                     $stmt = $conn->prepare($query);
-                    if($stmt->execute(array(":descricao" => $this->descricao, ":foto" => $this->foto, ":valor" => $this->valor, ":tipo" => $this->tipo, ':fotoTipo' => $this->fotoTipo)))
+                    if($stmt->execute(array(":descricao" => $this->descricao, ":foto" => $this->foto, ":valor" => $this->valor, ":tipo" => $this->tipo, ':fotoTipo' => $this->fotoTipo, ':path' => $this->path)))
                         $result = $stmt->rowCount();
                 }
             }
